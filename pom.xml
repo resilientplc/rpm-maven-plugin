@@ -10,11 +10,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
+  <!-- 
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>mojo-parent</artifactId>
     <version>38</version>
+   -->
+    <groupId>com.resilient</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.6.60</version>
   </parent>
 
+  <groupId>com.resilient.maven.plugins</groupId>
   <artifactId>rpm-maven-plugin</artifactId>
   <version>2.1.6-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
@@ -22,6 +28,7 @@
   <name>RPM Maven Plugin</name>
   <description>
     Maven plugin which assembles files into an RPM package for installation on various target UNIX systems.
+    A fork of the original, to be submitted upstream.
   </description>
   <inceptionYear>2005</inceptionYear>
 
@@ -109,10 +116,10 @@
   </contributors>
 
   <scm>
-    <connection>scm:git:https://github.com/mojohaus/rpm-maven-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mojohaus/rpm-maven-plugin.git</developerConnection>
-    <url>https://github.com/mojohaus/rpm-maven-plugin</url>
-    <tag>epoch</tag>
+    <connection>scm:git:https://github.com/resilientplc/rpm-maven-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:resilientplc/rpm-maven-plugin.git</developerConnection>
+    <url>https://github.com/resilientplc/rpm-maven-plugin.git</url>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
@@ -170,6 +177,7 @@
     <dependency>
       <groupId>org.apache.maven.plugin-tools</groupId>
       <artifactId>maven-plugin-annotations</artifactId>
+      <version>3.4</version>
       <!-- annotations are not needed for plugin execution so you can remove this dependency for execution with using provided scope -->
       <scope>provided</scope>
     </dependency>
@@ -186,6 +194,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
+        <version>3.4</version>
         <configuration>
           <!-- see http://jira.codehaus.org/browse/MNG-5346 -->
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
@@ -195,6 +204,12 @@
             <id>mojo-descriptor</id>
             <goals>
               <goal>descriptor</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>help-mojo</id>
+            <goals>
+              <goal>helpmojo</goal>
             </goals>
           </execution>
         </executions>
